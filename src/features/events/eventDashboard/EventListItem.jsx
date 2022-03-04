@@ -1,6 +1,7 @@
-import React from "react";
-import { Segment, Item, Icon, List, Button } from "semantic-ui-react";
-import EventListAttendee from "./EventListAttendee";
+import React from 'react';
+import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
+import EventListAttendee from './EventListAttendee';
+import { Link } from 'react-router-dom';
 
 export default function EventListItem({ event, selectEvent, deleteEvent }) {
   return (
@@ -8,7 +9,7 @@ export default function EventListItem({ event, selectEvent, deleteEvent }) {
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size="tiny" circular src={event.hostPhotoURL} />
+            <Item.Image size='tiny' circular src={event.hostPhotoURL} />
             <Item.Content>
               <Item.Header content={event.title} />
               <Item.Description>Hosted by {event.hostedBy}</Item.Description>
@@ -18,8 +19,8 @@ export default function EventListItem({ event, selectEvent, deleteEvent }) {
       </Segment>
       <Segment>
         <span>
-          <Icon name="clock" /> {event.date}
-          <Icon name="marker" /> {event.venue}
+          <Icon name='clock' /> {event.date}
+          <Icon name='marker' /> {event.venue}
         </span>
       </Segment>
       <Segment secondary>
@@ -33,15 +34,15 @@ export default function EventListItem({ event, selectEvent, deleteEvent }) {
         <div>{event.description}</div>
         <Button
           onClick={() => deleteEvent(event.id)}
-          color="red"
-          floated="right"
-          content="Delete"
+          color='red'
+          floated='right'
+          content='Delete'
         />
         <Button
-          onClick={() => selectEvent(event)}
-          color="teal"
-          floated="right"
-          content="View"
+          as={Link} to={`/events/${event.id}`}
+          color='teal'
+          floated='right'
+          content='View'
         />
       </Segment>
     </Segment.Group>
