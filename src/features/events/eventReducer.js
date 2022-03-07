@@ -1,5 +1,5 @@
-import { sampleData } from "../../../api/sampleData";
-import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT } from "./eventConstants";
+import { sampleData } from '../../app/api/sampleData';
+import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT } from './eventConstants';
 
 const initialState = {
   events: sampleData,
