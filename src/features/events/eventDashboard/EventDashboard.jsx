@@ -9,9 +9,6 @@ export default function EventDashboard() {
 
   const {events} = useSelector(state => state.event);
 
-  console.log("events",events)
-
-
   // const [events, setEvents] = useState(sampleData);
   
   // function handleCreateEvent(event) {
