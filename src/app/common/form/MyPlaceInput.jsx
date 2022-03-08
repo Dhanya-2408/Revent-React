@@ -7,7 +7,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 
 export default function MyPlaceInput({ label, options, ...props }) {
-  
   const [field, meta, helpers] = useField(props);
 
   function handleSelect(address) {
