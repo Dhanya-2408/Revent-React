@@ -1,4 +1,5 @@
 import firebase from "../config/firebase";
+import cuid from "cuid";
 
 const db = firebase.firestore();
 
@@ -30,4 +31,47 @@ export function listenToEventsFromFirestore() {
 
 export function listenToEventFromFirestore(eventId) {
   return db.collection("events").doc(eventId);
+}
+
+// CRUD For Event
+
+export function addEventToFirestore(event) {
+  return db.collection("events").add({
+    ...event,
+    hostedBy: "Diana",
+    hostPhotoURL: "https://randomuser.me/api/portraits/women/20.jpg",
+    attendees: firebase.firestore.FieldValue.arrayUnion({
+      id: cuid(),
+      displayName: "Diana",
+      photoURL: "https://randomuser.me/api/portraits/women/20.jpg",
+    }),
+    city: {
+      address: "NY, USA",
+      latLng: {
+        lat: 40.7484405,
+        lng: -73.98566440000002,
+      },
+    },
+    venue: {
+      address: "Empire State Building, 5th Avenue, New York, NY, USA",
+      latLng: {
+        lat: 40.7484405,
+        lng: -73.98566440000002,
+      },
+    },
+  });
+}
+
+export function updateEventInFirestore(event) {
+  return db.collection("events").doc(event.id).update(event);
+}
+
+export function deleteEventInFirestore(eventId) {
+  return db.collection("events").doc(eventId).delete();
+}
+
+export function cancelEventToggle(event) {
+  return db.collection("events").doc(event.id).update({
+    isCancelled: !event.isCancelled,
+  });
 }
