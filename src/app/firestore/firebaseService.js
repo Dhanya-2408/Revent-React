@@ -26,7 +26,6 @@ export async function registerInFirebase(creds) {
   }
 }
 
-
 export async function socialLogin(selectedProvider) {
   let provider;
   if (selectedProvider === "facebook") {
@@ -44,4 +43,9 @@ export async function socialLogin(selectedProvider) {
   } catch (error) {
     toast.error(error.message);
   }
+}
+
+export function updateUserPassword(creds) {
+  const user = firebase.auth().currentUser;
+  return user.updatePassword(creds.newPassword1);
 }
