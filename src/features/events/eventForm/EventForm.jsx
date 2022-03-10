@@ -1,4 +1,3 @@
-/* global google */
 import React,{useState} from 'react';
 import { Segment, Header, Button, Confirm } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
